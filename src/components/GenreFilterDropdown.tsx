@@ -23,7 +23,7 @@ const GenreFilterDropdown = (props: any) => {
     availableGenres.sort((a: any, b: any) => a.localeCompare(b))
 
     return (
-        <select onChange={ e => changeStateHandler(e) } >
+        <select id="dropdown" style={{ float: 'right' }} onChange={ e => changeStateHandler(e) } >
             <option value="all" >All Genres</option>
             { availableGenres.map((genre: any) => <option value={ genre } >{genre}</option>) }
         </select>

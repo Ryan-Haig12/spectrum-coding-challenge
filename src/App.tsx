@@ -59,6 +59,9 @@ const App = () => {
         <StateFilterDropdown setSelectedState={ setSelectedState } />
         <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
         <h1>No Resturants found for state '{ selectedState }' and genre '{ selectedGenre }'</h1>
+        <button
+          onClick={ () => { setSearchResults([]); setSelectedGenre('all'); setSelectedPagination(1); setSelectedState('all') } }
+        >Reset Search</button>
       </div>
     )
   }
@@ -69,7 +72,7 @@ const App = () => {
       <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
       <SearchTable setSearchResults={ setSearchResults } resturants={ resturantData } />
 
-      <table>
+      <table id="resturantTable">
         <thead>
           <tr>
             <th>Name</th>
@@ -89,9 +92,9 @@ const App = () => {
           />
         </tbody>
       </table>
-      <div>
-        <button onClick={ () => handlePagination(-1) }>Back</button>
-        <button onClick={ () => handlePagination(1) }>Next</button>
+      <div id="buttonContainer">
+        <button style={{ float: 'left' }} onClick={ () => handlePagination(-1) }>Back</button>
+        <button style={{ float: 'right' }} onClick={ () => handlePagination(1) }>Next</button>
       </div>
     </div>
   )

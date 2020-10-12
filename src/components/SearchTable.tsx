@@ -32,9 +32,10 @@ const SearchTable = (props: any) => {
     }
 
     return (
-        <form onSubmit={ e => onSearchHandler(e) } >
-            <input value={ searchTerm } onChange={ e => setSearchTerm(e.target.value) } type="text" />
+        <form id="searchForm" onSubmit={ e => onSearchHandler(e) } >
+            <input value={ searchTerm } onChange={ e => setSearchTerm(e.target.value) } type="text" placeholder="Search for Resturants!" />
             <button type="submit">Search</button>
+            <button onClick={ () => setSearchTerm('') } >Clear Search</button>
         </form>
     )
 }

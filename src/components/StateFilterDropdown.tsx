@@ -11,7 +11,7 @@ const StateFilterDropdown = (props: any) => {
     }
 
     return (
-        <select onChange={ e => changeStateHandler(e) } >
+        <select id="dropdown" onChange={ e => changeStateHandler(e) } >
             <option value="all" >All States</option>
             { statesHash.map(state => <option value={ state } >{state}</option>) }
         </select>
