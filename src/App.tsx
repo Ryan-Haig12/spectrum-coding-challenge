@@ -15,6 +15,7 @@ const App = () => {
   const [ resturantData, setResturantData ] = useState()
   const [ searchResults, setSearchResults ] = useState([])
   const [ selectedGenre, setSelectedGenre ] = useState('all')
+  const [ selectedPagination, setSelectedPagination ] = useState(1)
   const [ selectedState, setSelectedState ] = useState('all')
 
   const getApiData = async () => {
@@ -27,6 +28,16 @@ const App = () => {
     // sorts the resturant data alphabetically
     const sortedResturantData = resData.data.sort((a: Resturant, b: Resturant) => a.name.localeCompare(b.name))
     setResturantData(sortedResturantData)
+  }
+
+  // ensure when the user presses Back or Next, the previous or next 10 listings are shown
+  // this took me a while, and it's ugly..... but it works!
+  // If I had more time to write this application, I'd make this table show data from a GraphQL endpoint
+  // this would make pagination, genre selection, search results, etc. SO much easier to grab/show
+  const handlePagination = (pag: number) => {
+    let i = selectedPagination
+    // do not allow pagination to go under 1 or above the max resturantData.length / 10
+    if((pag === 1 && !(selectedPagination + 1 > (resturantData.length / 10) + 1)) || (pag === -1 && selectedPagination !== 1)) setSelectedPagination(i += pag)
   }
   
   // when the application loads, fire the async getApiData function to get all resturant data
@@ -57,6 +68,7 @@ const App = () => {
       <StateFilterDropdown setSelectedState={ setSelectedState } />
       <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
       <SearchTable setSearchResults={ setSearchResults } resturants={ resturantData } />
+
       <table>
         <thead>
           <tr>
@@ -68,9 +80,19 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          <ResturantTable resturants={ resturantData } selectedState={ selectedState } selectedGenre={ selectedGenre } searchResults={ searchResults } />
+          <ResturantTable 
+            resturants={ resturantData }
+            selectedState={ selectedState }
+            selectedGenre={ selectedGenre }
+            searchResults={ searchResults }
+            pagination={ selectedPagination }  
+          />
         </tbody>
       </table>
+      <div>
+        <button onClick={ () => handlePagination(-1) }>Back</button>
+        <button onClick={ () => handlePagination(1) }>Next</button>
+      </div>
     </div>
   )
 }

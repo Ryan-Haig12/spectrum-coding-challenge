@@ -3,13 +3,15 @@ import React from 'react'
 import Resturant from '../definitions/Resturant'
 
 const ResturantTable = (props: any) => {
-  const { resturants, selectedState, selectedGenre, searchResults } = props
+  const { resturants, selectedState, selectedGenre, searchResults, pagination } = props
 
-  console.log('from table', selectedState, selectedGenre, searchResults)
+  console.log('from table', selectedState, selectedGenre, searchResults, pagination)
 
   // if there is searchResults, render the table by those search results
   // if there are no serachResults, render the table by the original resturants list
   let filterBy = searchResults.length ? searchResults : resturants
+  console.log('pagination', (pagination - 1) * 10, pagination * 10)
+  filterBy = filterBy.slice((pagination - 1) * 10, pagination * 10)
 
   return filterBy.map((resturant: Resturant) => {
       // show all states if selectedState is set to all
