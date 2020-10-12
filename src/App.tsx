@@ -1,24 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import './App.css'
+import Resturant from './definitions/Resturant'
 
-interface Resturant {
-  id: string,
-  address1: string,
-  attire: string,
-  city: string,
-  genre: string,
-  hours: string,
-  lat: string,
-  long: string,
-  name: string,
-  state: string,
-  tags: string,
-  telephone: string,
-  website: string,
-  zip: string
-}
+import './App.css'
 
 const App = () => {
 
@@ -44,8 +29,6 @@ const App = () => {
     )
   }
 
-  console.log(resturantData)
-
   return (
     <table>
       <thead>
@@ -70,10 +53,6 @@ const App = () => {
             </tr>
           )
         }) }
-        <tr>
-          <td>January</td>
-          <td>$100</td>
-        </tr>
       </tbody>
     </table>
   )
