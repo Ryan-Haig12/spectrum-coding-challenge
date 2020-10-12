@@ -9,10 +9,12 @@ const ResturantTable = (props: any) => {
   // if there are no serachResults, render the table by the original resturants list
   let filterBy = searchResults.length ? searchResults : resturants
 
-  // stops pagination when results are present
-  if(selectedState === 'all' && selectedGenre === 'all')
-    filterBy = filterBy.slice((pagination - 1) * 10, pagination * 10)
+  // slice list to create pagination effect
+  filterBy = filterBy.slice((pagination - 1) * 10, pagination * 10)
 
+  // genre is not playing nice with pagination at all...
+  // pagination seems to work well when there's a selected state or a search result
+  // but when genre !== all and there's 10+ genres (i.e. American), pagination just prints all results...
   return filterBy.map((resturant: Resturant) => {
       // show all states if selectedState is set to all
       // else, only show the data for the state selected by the user
