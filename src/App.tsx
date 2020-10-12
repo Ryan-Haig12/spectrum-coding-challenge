@@ -74,6 +74,11 @@ const App = () => {
       <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
       <SearchTable setSearchResults={ setSearchResults } resturants={ resturantData } />
 
+      <div id="buttonContainer">
+        <button style={{ float: 'left' }} onClick={ () => handlePagination(-1) }>Back</button>
+        <button style={{ float: 'right' }} onClick={ () => handlePagination(1) }>Next</button>
+      </div>
+
       <table id="resturantTable">
         <thead>
           <tr>
@@ -95,11 +100,6 @@ const App = () => {
           />
         </tbody>
       </table>
-      <div id="buttonContainer">
-        <button style={{ float: 'left' }} onClick={ () => handlePagination(-1) }>Back</button>
-        <button style={{ float: 'right' }} onClick={ () => handlePagination(1) }>Next</button>
-      </div>
-
       <ResturantDetails currentResturant={ currentResturant } />
     </div>
   )
