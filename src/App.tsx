@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import Resturant from './definitions/Resturant'
+
+import GenreFilterDropdown from './components/GenreFilterDropdown'
 import ResturantTable from './components/ResturantTable'
 import StateFilterDropdown from './components/StateFilterDropdown'
 
@@ -10,6 +12,7 @@ import './App.css'
 const App = () => {
 
   const [ resturantData, setResturantData ] = useState()
+  const [ selectedGenre, setSelectedGenre ] = useState('all')
   const [ selectedState, setSelectedState ] = useState('all')
 
   const getApiData = async () => {
@@ -39,7 +42,8 @@ const App = () => {
     return (
       <div>
         <StateFilterDropdown setSelectedState={ setSelectedState } />
-        <h1>No Resturants found for state { selectedState }</h1>
+        <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
+        <h1>No Resturants found for state '{ selectedState }' and genre '{ selectedGenre }'</h1>
       </div>
     )
   }
@@ -47,6 +51,7 @@ const App = () => {
   return (
     <div>
       <StateFilterDropdown setSelectedState={ setSelectedState } />
+      <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
       <table>
         <thead>
           <tr>
@@ -58,7 +63,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          <ResturantTable resturants={ resturantData } selectedState={ selectedState } />
+          <ResturantTable resturants={ resturantData } selectedState={ selectedState } selectedGenre={ selectedGenre } />
         </tbody>
       </table>
     </div>
