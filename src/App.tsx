@@ -15,7 +15,10 @@ const App = () => {
         Authorization: 'Api-Key q3MNxtfep8Gt'
       }
     })
-    setResturantData(resData.data)
+
+    // sorts the resturant data alphabetically
+    const sortedResturantData = resData.data.sort((a: Resturant, b: Resturant) => a.name.localeCompare(b.name))
+    setResturantData(sortedResturantData)
   }
   
   // when the application loads, fire the async getApiData function to get all resturant data
