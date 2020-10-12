@@ -5,6 +5,7 @@ import Resturant from './definitions/Resturant'
 
 import GenreFilterDropdown from './components/GenreFilterDropdown'
 import ResturantTable from './components/ResturantTable'
+import SearchTable from './components/SearchTable'
 import StateFilterDropdown from './components/StateFilterDropdown'
 
 import './App.css'
@@ -12,6 +13,7 @@ import './App.css'
 const App = () => {
 
   const [ resturantData, setResturantData ] = useState()
+  const [ searchResults, setSearchResults ] = useState([])
   const [ selectedGenre, setSelectedGenre ] = useState('all')
   const [ selectedState, setSelectedState ] = useState('all')
 
@@ -38,6 +40,8 @@ const App = () => {
     )
   }
 
+  // if there are no results for the given state/genre, return a message saying so
+  // also give the user the ability to change states and genres
   if(selectedState !== 'all' && !resturantData.filter((resturant: Resturant) => selectedState === resturant.state).length) {
     return (
       <div>
@@ -52,6 +56,7 @@ const App = () => {
     <div>
       <StateFilterDropdown setSelectedState={ setSelectedState } />
       <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
+      <SearchTable setSearchResults={ setSearchResults } resturants={ resturantData } />
       <table>
         <thead>
           <tr>
@@ -63,7 +68,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          <ResturantTable resturants={ resturantData } selectedState={ selectedState } selectedGenre={ selectedGenre } />
+          <ResturantTable resturants={ resturantData } selectedState={ selectedState } selectedGenre={ selectedGenre } searchResults={ searchResults } />
         </tbody>
       </table>
     </div>
