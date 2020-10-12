@@ -17,6 +17,7 @@ const GenreFilterDropdown = (props: any) => {
             // ensure the user does not see duplicate genres
             resturant.genre.split(',').map((genre: any) => !availableGenres.includes(genre) && availableGenres.push(genre))
         }
+        return null // gets rid of console error
     })
 
     // sort genres in alphabetical order
@@ -25,7 +26,7 @@ const GenreFilterDropdown = (props: any) => {
     return (
         <select id="dropdown" style={{ float: 'right' }} onChange={ e => changeStateHandler(e) } >
             <option value="all" >All Genres</option>
-            { availableGenres.map((genre: any) => <option value={ genre } >{genre}</option>) }
+            { availableGenres.map((genre: any) => <option key={ genre } value={ genre } >{genre}</option>) }
         </select>
     )
 }

@@ -27,6 +27,7 @@ const ResturantTable = (props: any) => {
           </tr>
         )
       }
+      return null // gets rid of console error
   })
 }
 

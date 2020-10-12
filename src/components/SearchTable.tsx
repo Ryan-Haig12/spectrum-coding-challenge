@@ -21,6 +21,7 @@ const SearchTable = (props: any) => {
             if(resturantName.includes(term) || resturantCity.includes(term) || resturantGenres.includes(term)) {
                 searchResults.push(resturant)
             }
+            return null // gets rid of console error
         })
 
         // if no search results are found, just alert the user

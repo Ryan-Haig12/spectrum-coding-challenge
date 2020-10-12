@@ -14,7 +14,7 @@ import ResturantDetails from './components/ResturantDetails'
 const App = () => {
 
   const [ currentResturant, setCurrentResturant ] = useState({})
-  const [ resturantData, setResturantData ] = useState()
+  const [ resturantData, setResturantData ] = useState([])
   const [ searchResults, setSearchResults ] = useState([])
   const [ selectedGenre, setSelectedGenre ] = useState('all')
   const [ selectedPagination, setSelectedPagination ] = useState(1)
@@ -39,7 +39,7 @@ const App = () => {
   const handlePagination = (pag: number) => {
     let i = selectedPagination
     // do not allow pagination to go under 1 or above the max resturantData.length / 10
-    if((pag === 1 && !(selectedPagination + 1 > (resturantData.length / 10) + 1)) || (pag === -1 && selectedPagination !== 1)) setSelectedPagination(i += pag)
+    if((pag === 1 && !(selectedPagination + 1 > (resturantData?.length / 10) + 1)) || (pag === -1 && selectedPagination !== 1)) setSelectedPagination(i += pag)
   }
   
   // when the application loads, fire the async getApiData function to get all resturant data
@@ -99,7 +99,7 @@ const App = () => {
         <button style={{ float: 'left' }} onClick={ () => handlePagination(-1) }>Back</button>
         <button style={{ float: 'right' }} onClick={ () => handlePagination(1) }>Next</button>
       </div>
-      
+
       <ResturantDetails currentResturant={ currentResturant } />
     </div>
   )
