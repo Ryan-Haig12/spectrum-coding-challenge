@@ -1,5 +1,6 @@
 #buttonContainer {
   padding: 20px;
+  margin-bottom: 50px; /* ensure that resturant details appears below the buttons */
 }
 
 #buttonContainer button {
@@ -7,6 +8,17 @@
   color: white;
   height: 50px;
   width: 200px;
+}
+
+#currentResturant {
+  background-color: #ddd;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 50%;
 }
 
 #dropdown {

@@ -9,9 +9,11 @@ import SearchTable from './components/SearchTable'
 import StateFilterDropdown from './components/StateFilterDropdown'
 
 import './App.css'
+import ResturantDetails from './components/ResturantDetails'
 
 const App = () => {
 
+  const [ currentResturant, setCurrentResturant ] = useState({})
   const [ resturantData, setResturantData ] = useState()
   const [ searchResults, setSearchResults ] = useState([])
   const [ selectedGenre, setSelectedGenre ] = useState('all')
@@ -88,7 +90,8 @@ const App = () => {
             selectedState={ selectedState }
             selectedGenre={ selectedGenre }
             searchResults={ searchResults }
-            pagination={ selectedPagination }  
+            pagination={ selectedPagination }
+            setCurrentResturant={ setCurrentResturant }  
           />
         </tbody>
       </table>
@@ -96,6 +99,8 @@ const App = () => {
         <button style={{ float: 'left' }} onClick={ () => handlePagination(-1) }>Back</button>
         <button style={{ float: 'right' }} onClick={ () => handlePagination(1) }>Next</button>
       </div>
+      
+      <ResturantDetails currentResturant={ currentResturant } />
     </div>
   )
 }
