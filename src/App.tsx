@@ -3,12 +3,14 @@ import axios from 'axios'
 
 import Resturant from './definitions/Resturant'
 import ResturantTable from './components/ResturantTable'
+import StateFilterDropdown from './components/StateFilterDropdown'
 
 import './App.css'
 
 const App = () => {
 
   const [ resturantData, setResturantData ] = useState()
+  const [ selectedState, setSelectedState ] = useState('all')
 
   const getApiData = async () => {
     const resData = await axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
@@ -33,21 +35,33 @@ const App = () => {
     )
   }
 
+  if(selectedState !== 'all' && !resturantData.filter((resturant: Resturant) => selectedState === resturant.state).length) {
+    return (
+      <div>
+        <StateFilterDropdown setSelectedState={ setSelectedState } />
+        <h1>No Resturants found for state { selectedState }</h1>
+      </div>
+    )
+  }
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Phone Number</th>
-          <th>Genre</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ResturantTable resturants={ resturantData } />
-      </tbody>
-    </table>
+    <div>
+      <StateFilterDropdown setSelectedState={ setSelectedState } />
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Phone Number</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ResturantTable resturants={ resturantData } selectedState={ selectedState } />
+        </tbody>
+      </table>
+    </div>
   )
 }
 
