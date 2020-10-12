@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import Resturant from './definitions/Resturant'
+import ResturantTable from './components/ResturantTable'
 
 import './App.css'
 
@@ -44,18 +45,7 @@ const App = () => {
         </tr>
       </thead>
       <tbody>
-        { resturantData.map((resturant: Resturant) => {
-          console.log(resturant)
-          return (
-            <tr key={ resturant.id } >
-              <td>{ resturant.name }</td>
-              <td>{ resturant.city }</td>
-              <td>{ resturant.state }</td>
-              <td>{ resturant.telephone }</td>
-              <td>{ resturant.genre }</td>
-            </tr>
-          )
-        }) }
+        <ResturantTable resturants={ resturantData } />
       </tbody>
     </table>
   )
