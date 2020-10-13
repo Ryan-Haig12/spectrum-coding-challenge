@@ -19,9 +19,24 @@ const ResturantTable = (props: any) => {
       // show all states if selectedState is set to all
       // else, only show the data for the state selected by the user
       if((selectedState === 'all' || selectedState === resturant.state) && (selectedGenre === 'all' || resturant.genre.split(',').includes(selectedGenre))) {
+        let icon
+        switch(resturant.attire.toLocaleLowerCase()) {
+          case 'business casual':
+            icon = 'https://img.icons8.com/plasticine/50/000000/clothes.png'
+            break
+          case 'smart casual':
+            icon = 'https://img.icons8.com/dusk/50/000000/dirty-clothes.png'
+            break
+          case 'casual':
+            icon = 'https://img.icons8.com/plasticine/50/000000/mens-pajama.png'
+            break
+          case 'formal':
+            icon = 'https://img.icons8.com/plasticine/50/000000/formal-outfit.png'
+            break
+        }
         return (
           <tr key={ resturant.id } onClick={ () => setCurrentResturant(resturant) } >
-            <td>{ resturant.name }</td>
+            <td><img src={ icon }/>{ resturant.name }</td>
             <td>{ resturant.city }</td>
             <td>{ resturant.state }</td>
             <td>{ resturant.telephone }</td>

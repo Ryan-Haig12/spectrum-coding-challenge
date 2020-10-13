@@ -5,6 +5,8 @@
 
 #buttonContainer button {
   background-color: #030146;
+  border: none;
+  border-radius: 5px;
   color: white;
   height: 50px;
   width: 200px;
@@ -16,7 +18,8 @@
   border-radius: 5px;
   color: black;
   margin: 0 auto;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
   width: 50%;
 }

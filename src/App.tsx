@@ -32,6 +32,8 @@ const App = () => {
     setResturantData(sortedResturantData)
   }
 
+  resturantData.map((resturant: any) => console.log(resturant.attire))
+
   // ensure when the user presses Back or Next, the previous or next 10 listings are shown
   // this took me a while, and it's ugly..... but it works!
   // If I had more time to write this application, I'd make this table show data from a GraphQL endpoint
@@ -74,10 +76,19 @@ const App = () => {
       <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
       <SearchTable setSearchResults={ setSearchResults } resturants={ resturantData } />
 
+      <div>
+        <div><img src="https://img.icons8.com/plasticine/50/000000/clothes.png" />Business Casual</div>
+        <div><img src="https://img.icons8.com/dusk/50/000000/dirty-clothes.png" />Smart Casual</div>
+        <div><img src="https://img.icons8.com/plasticine/50/000000/mens-pajama.png" />Casual</div>
+        <div><img src="https://img.icons8.com/plasticine/50/000000/formal-outfit.png" />Formal</div>
+      </div>
+
       <div id="buttonContainer">
         <button style={{ float: 'left' }} onClick={ () => handlePagination(-1) }>Back</button>
         <button style={{ float: 'right' }} onClick={ () => handlePagination(1) }>Next</button>
       </div>
+
+      <h3 style={{ textAlign: 'center' }} >Click any Resturant and scroll down to view more information</h3>
 
       <table id="resturantTable">
         <thead>
