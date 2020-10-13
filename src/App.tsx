@@ -32,8 +32,6 @@ const App = () => {
     setResturantData(sortedResturantData)
   }
 
-  resturantData.map((resturant: any) => console.log(resturant.attire))
-
   // ensure when the user presses Back or Next, the previous or next 10 listings are shown
   // this took me a while, and it's ugly..... but it works!
   // If I had more time to write this application, I'd make this table show data from a GraphQL endpoint
