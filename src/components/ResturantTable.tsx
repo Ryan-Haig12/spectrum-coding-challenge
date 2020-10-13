@@ -36,7 +36,7 @@ const ResturantTable = (props: any) => {
         }
         return (
           <tr key={ resturant.id } onClick={ () => setCurrentResturant(resturant) } >
-            <td><img src={ icon }/>{ resturant.name }</td>
+            <td><img alt={ icon } src={ icon }/>{ resturant.name }</td>
             <td>{ resturant.city }</td>
             <td>{ resturant.state }</td>
             <td>{ resturant.telephone }</td>

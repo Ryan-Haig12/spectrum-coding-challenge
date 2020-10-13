@@ -75,10 +75,10 @@ const App = () => {
       <SearchTable setSearchResults={ setSearchResults } resturants={ resturantData } />
 
       <div style={{ display: 'flex' }}>
-        <div><img src="https://img.icons8.com/plasticine/50/000000/clothes.png" />Business Casual</div>
-        <div><img src="https://img.icons8.com/dusk/50/000000/dirty-clothes.png" />Smart Casual</div>
-        <div><img src="https://img.icons8.com/plasticine/50/000000/mens-pajama.png" />Casual</div>
-        <div><img src="https://img.icons8.com/plasticine/50/000000/formal-outfit.png" />Formal</div>
+        <div><img alt="businessCasual" src="https://img.icons8.com/plasticine/50/000000/clothes.png" />Business Casual</div>
+        <div><img alt="smartCasual" src="https://img.icons8.com/dusk/50/000000/dirty-clothes.png" />Smart Casual</div>
+        <div><img alt="casual" src="https://img.icons8.com/plasticine/50/000000/mens-pajama.png" />Casual</div>
+        <div><img alt="formal" src="https://img.icons8.com/plasticine/50/000000/formal-outfit.png" />Formal</div>
       </div>
 
       <div id="buttonContainer">
