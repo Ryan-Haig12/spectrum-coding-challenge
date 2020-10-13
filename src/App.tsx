@@ -76,7 +76,7 @@ const App = () => {
       <GenreFilterDropdown setSelectedGenre={ setSelectedGenre } resturants={ resturantData } selectedState={ selectedState } />
       <SearchTable setSearchResults={ setSearchResults } resturants={ resturantData } />
 
-      <div>
+      <div style={{ display: 'flex' }}>
         <div><img src="https://img.icons8.com/plasticine/50/000000/clothes.png" />Business Casual</div>
         <div><img src="https://img.icons8.com/dusk/50/000000/dirty-clothes.png" />Smart Casual</div>
         <div><img src="https://img.icons8.com/plasticine/50/000000/mens-pajama.png" />Casual</div>
